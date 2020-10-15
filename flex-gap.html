@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background: #2c3e50;
+        color: #f5f5f5;
+        background-blend-mode: darken;
+      }
+      .container {
+        display: flex;
+        gap: 1.8vw;
+        flex-wrap: wrap;
+      }
+
+      p {
+        font-size: clamp(14px, 2.5px, 20px);
+      }
+
+      .item {
+        flex: clamp(250px, 25% - 1.8vw, 25%) 1 0;
+        background-color: #2c3e50;
+      }
+
+      .item p {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .item img {
+        width: clamp(150px, calc(100% - 100px), 300px);
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body onresize="changeValue()">
+    <h1>CSS functions with flex</h1>
+    <p>flex-basis: clamp(250px, 25% - 1.8vw, 25%)</p>
+    <p class="display-value"></p>
+    <div class="container">
+      <div class="item">
+        <h3>Charmander</h3>
+        <img src="./assets/images/charmander.jpg" />
+        <p>
+          Charmander is a bipedal, reptilian Pokémon with a primarily orange
+          body and blue eyes. Its underside from the chest down and the soles of
+          its feet are cream-colored. It has two small fangs visible in its
+          upper jaw and two smaller fangs in its lower jaw. A fire burns at the
+          tip of this Pokémon's slender tail and has blazed there since
+          Charmander's birth. The flame can be used as an indication of
+          Charmander's health and mood, burning brightly when the Pokémon is
+          strong, weakly when it is exhausted, wavering when it is happy, and
+          blazing when it is enraged. It is said that Charmander dies if its
+          flame goes out. However, if the Pokémon is healthy, the flame will
+          continue to burn even if it gets a bit wet and is said to steam in the
+          rain. Charmander can be found in hot, mountainous areas. However, it
+          is found far more often in the ownership of Trainers. As shown in
+          Pokémon Snap, Charmander exhibits pack behavior, calling others of its
+          species if it finds food.
+        </p>
+      </div>
+      <div class="item">
+        <h3>Bulbasaur</h3>
+        <img src="./assets/images/bulbasaur.jpg" />
+        <p>
+          Bulbasaur is a small, quadruped Pokémon that has blue-green skin with
+          darker patches. It has red eyes with white pupils, pointed, ear-like
+          structures on top of its head, and a short, blunt snout with a wide
+          mouth. A pair of small, pointed teeth are visible in the upper jaw
+          when its mouth is open. Each of its thick legs ends with three sharp
+          claws. On its back is a green plant bulb, which is grown from a seed
+          planted there at birth. The bulb provides it with energy through
+          photosynthesis as well as from the nutrient-rich seeds contained
+          within. As mentioned in the anime, starter Pokémon are raised by
+          Breeders to be distributed to new Trainers. Having been domesticated
+          from birth, Bulbasaur is regarded as both a rare and well-behaved
+          Pokémon. It is known to be extremely loyal, even after long-term
+          abandonment. Bulbasaur has also shown itself to be an excellent
+          caretaker, even having a special technique called the 'Bulba-by.' To
+          perform this technique, Bulbasaur uses its vines to pick up a young
+          Pokémon and soothingly rocks it in the air. It is found in grasslands
+          and forests throughout the Kanto region. However, due to Bulbasaur's
+          status as starter Pokémon, it is hard to come by in the wild and
+          generally found under the ownership of a Trainer. It has been observed
+          that a Bulbasaur's bulb will flash blue when it is ready to evolve. If
+          it does not want to evolve, it struggles to resist the transformation.
+          Many Bulbasaur gather every year in a hidden garden in Kanto to evolve
+          into Ivysaur in a ceremony led by a Venusaur.
+        </p>
+      </div>
+      <div class="item">
+        <h3>Caterpie</h3>
+        <img src="./assets/images/caterpie.jpg" />
+        <p>
+          Caterpie is a Pokémon that resembles a green caterpillar with a yellow
+          underside and teardrop-shaped tail. There are yellow ring-shaped
+          markings down the sides of its segmented body, which resemble its eyes
+          and are meant to scare off predators. Its most notable characteristic
+          is the bright red antenna (osmeterium) on its head, which releases a
+          stench to repel predators. Despite these features and its camouflage
+          in green foliage, Caterpie is often preyed upon by Flying-type
+          Pokémon. Its four tiny feet are tipped with suction cups, permitting
+          this Pokémon to scale most surfaces with minimal effort. Caterpie is
+          easy to capture and grows quickly, making it ideal for new Trainers.
+          It will shed its skin many times before finally cocooning itself in
+          thick silk. It can also spit this silk in order to entangle foes as
+          seen in the anime. It has a voracious appetite, which drives it to eat
+          a hundred leaves a day. It will even eat leaves bigger than itself.
+          According to Pokémon Adventures, its favorite food is the Vermilion
+          flower. Caterpie lives in forests.
+        </p>
+      </div>
+      <div class="item">
+        <h3>Weedle</h3>
+        <img src="./assets/images/weedle.jpg" />
+        <p>
+          Weedle is a larval Pokémon with a segmented body ranging in color from
+          yellow to reddish-brown. Each segment of its body is a sphere. It has
+          a bulbous red nose on its face and two spherical feet on each body
+          segment. The combination of red and yellow coloration creates a bright
+          warning to predators that it is poisonous. Weedle has a conical,
+          two-inch (five centimeter) venomous stinger on its head and a barbed
+          one on its tail. Weedle can retaliate against attackers and those who
+          step on it with its strong toxin. It can distinguish its favorite
+          kinds of leaves using its acute sense of smell. As a young Bug
+          Pokémon, its daily appetite for leaves matches its weight. Weedle can
+          be found in forests and usually hides in grass, bushes, and under the
+          leaves it eats.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const demo = document.querySelector(".display-value");
+      const item = document.querySelector(".item");
+      function changeValue() {
+        demo.innerHTML = `flex-basis : ${item.clientWidth}px`;
+      }
+      demo.innerHTML = `flex-basis : ${item.clientWidth}px`;
+    </script>
+  </body>
+</html>

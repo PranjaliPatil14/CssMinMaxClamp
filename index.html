@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-size: 20px;
+      }
+
+      .container {
+        background: black;
+        color: white;
+        width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      code {
+        background: white;
+        color: black;
+        display: block;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      ol {
+        background: white;
+      }
+
+      li {
+        line-height: 2;
+        color: black;
+      }
+
+      a {
+        text-decoration: none;
+        background: blue;
+        padding: 5px 20px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>min(), max() and clamp()</h1>
+      <div id="min">
+        <h2>min(a1, a2, a3, ...)</h2>
+        <code>
+          selects minimum value from all the arguments <br />
+          example: min(40%, 600px)<br /><br />
+          width: 2500px <br />
+          40%: 40*2500/100 = 1000px <br />
+          min(600px, 1000px) = 600px <br /><br />
+          width: 1667px <br />
+          40%: 40*1667/100 = 666px<br />
+          min(600px, 666px) = 600px <br /><br />
+          width: 1330px<br />
+          40%: 40*1330/100 = 532px <br />
+          min(600px, 532px) = 532px <br />
+          . <br />
+          . <br />
+          . <br />
+          i.e min will take 600px whenever 40vw is greater than 600px. <br />
+          i.e min is setting max-width value for container.<br />
+        </code>
+        <a href="min.html" target="_blank">Example</a>
+        <a onclick="goToMax()">></a>
+      </div>
+      <div id="max">
+        <h2>max(a1, a2, a3, ...)</h2>
+        <code>
+          selects maximum value from the arguments <br />
+          example : max(40%, 600px); <br /><br />
+          width: 2500px <br />
+          40%: 40*2500/100 = 1000px <br />
+          max(600px, 1000px) = 1000px <br /><br />
+          width: 1667px <br />
+          40%: 40*1667/100 = 666px <br />
+          max(600px, 666px) = 666px <br /><br />
+          width: 1330px <br />
+          40%: 40*1330/100 = 532px -> 600px <br />
+          max(600px, 532px) = 600px <br /><br />
+          . <br />
+          . <br />
+          . <br />
+          i.e max will take 600px whenever 40vw is less than 600px. <br />
+          i.e max is setting min-width value for container.<br />
+        </code>
+        <a href="max.html" target="_blank">Example</a>
+        <ol>
+          <li>
+            Can nest max() and other min() functions as expression values.
+          </li>
+          <li>
+            Can do mathematical operations inside max() or min() no need to use
+            calc(). example: min(40% - 20px , 200px);
+          </li>
+        </ol>
+
+        <h2>clamp(minValue, preferredValue, maxValue)</h2>
+        <code>
+          <ul>
+            <li>clamps a value between min value and max value.</li>
+            <li>clamps = max(minValue, min(preferredValue, maxValue))</li>
+          </ul>
+          example: clamp(350px, 50%, 700px)<br /><br />
+
+          width: 2550px;<br />
+          50%: 1275px<br />
+          clamp(350px, 1275px, 700px) -> 700px<br /><br />
+
+          width: 1300px;<br />
+          50%: 665px<br />
+          clamp(350px, 665px, 700px) -> 665px<br /><br />
+
+          width: 900px;<br />
+          50%: 450px<br />
+          clamp(350px, 450px, 700px) -> 450px<br /><br />
+
+          width: 600px;<br />
+          50%: 300px<br />
+          clamp(350px, 300px, 700px) -> 350px<br /><br />
+
+          i.e whenever preferredValue is greater than max value, max value will
+          be considered. <br />
+          i.e whenever preferredValue is less than min value, min value will be
+          considered. <br />
+        </code>
+        <a href="clamp.html" target="_blank">Example</a>
+      </div>
+      <div id="reverse-clamp">
+        <code>
+          clamp has its minimum value "win" over its maximum value if the two
+          are in the "wrong order". <br /><br />That is, clamp(100px, ..., 50px)
+          will resolve to 100px, exceeding its stated "max" value.
+          <br /><br />If alternate resolution mechanics are desired they can be
+          achieved by combining clamp() with min() or max():
+          <br />
+          <br />
+          <strong>To have MAX win over MIN:</strong>
+          <p>
+            clamp(min(minValue, maxValue), preferredValue, maxValue) or
+            min(maxValue, max(minValue, preferredValue)).
+          </p>
+
+          <strong
+            >To have MAX and MIN "swap" when they’re in the wrong order</strong
+          >
+          <p>
+            clamp(min(minValue, maxValue), preferredValue, max(minValue,
+            maxValue))
+          </p>
+        </code>
+      </div>
+    </div>
+    <script>
+      function goToMax() {
+        document.getElementById("min").style.display = "none";
+        document.getElementById("max").style.display = "block";
+      }
+    </script>
+  </body>
+</html>

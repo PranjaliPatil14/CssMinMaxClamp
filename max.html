@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-size: 24px;
+        text-align: center;
+        background: #212121;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+      }
+      h2,
+      p {
+        margin: 40px auto;
+        width: max(50%, 400px);
+      }
+      #container {
+        width: max(50%, 400px);
+        border: 5px solid #e0e0e0;
+        height: 400px;
+        margin: auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body onresize="changeValue()">
+    <h2>max(50%, 400px)</h2>
+    <p id="demo"></p>
+    <div id="container"></div>
+
+    <script>
+      function changeValue() {
+        const div = document.querySelector("div");
+        const demo = document.querySelector("p");
+
+        div.innerHTML = `Width : ${div.clientWidth + 10}px`;
+        demo.innerHTML = `Viewport Width : ${window.innerWidth}px; 50%: ${
+          (window.innerWidth * 1) / 2
+        }`;
+      }
+
+      const div = document.querySelector("div");
+      const demo = document.querySelector("p");
+
+      div.innerHTML = `Width : ${div.clientWidth + 10}px`;
+      demo.innerHTML = `Viewport Width : ${window.innerWidth}px; 50%: ${
+        (window.innerWidth * 1) / 2
+      }`;
+    </script>
+  </body>
+</html>
